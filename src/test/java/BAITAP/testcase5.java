@@ -140,9 +140,10 @@ public class testcase5 {
 
     private String generateRandomEmail() {
         // Generate a random email using UUID
-        String emailPrefix = UUID.randomUUID().toString().substring(0, 10);
+        String emailPrefix = UUID.randomUUID().toString().substring(0, 8);
         return emailPrefix + "@example.com";
 //        return UUID.randomUUID().toString() + "@example.com";
+        ////
     }
 
 //    private String generateRandomPassword() {
