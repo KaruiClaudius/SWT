@@ -1,13 +1,16 @@
 package BAITAP;
-import POM.TC_07_PAGE;
+
 import POM.TC_08_CheckOutPage;
 import POM.TC_08_PAGE;
-import org.testng.annotations.Test;
 import driver.driverFactory;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
+
+import java.util.Random;
+
 public class testcase8 {
     @Test
-    public void Main() {
+    public void TC08() {
 
         // Create a WebDriver instance
         WebDriver driver = driverFactory.getChromeDriver();
@@ -27,11 +30,17 @@ public class testcase8 {
         // Step 4: Click on 'REORDER' link , change QTY & click Update
         page.clickReorder();
         String OldgrandTotal = page.getOldGrandTotal();
-        page.changeQty("10");
+        Random rnd = new Random();
+        int randomQty = rnd.nextInt(250) + 1;
+        page.changeQty(String.valueOf(randomQty));
         page.clickUpdate();
 
         // Step 5: Verify Grand Total is changed
+
+
         String grandTotal = page.getGrandTotal();
+        System.out.println("Old Grand Total: " + OldgrandTotal);
+        System.out.println("New Grand Total: " + grandTotal);
         assert !grandTotal.equals(OldgrandTotal) : "Failed update Grand Total!";
         System.out.println("Grand Total Updated");
 
